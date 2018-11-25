@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>게시글 수정 - {{ article.pk }}. {{ article.title }}</title>{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+{% endblock css %}
+
+{% block content %}
+<form action="." method="post" class="form-horizontal">
+{% csrf_token %}
+<input type="hidden" name="action" value="{% if article %}update{% else %}create{% endif %}">
+<table class="table table-striped table-bordered">
+	<tr>
+		<th>번호</th>
+		<td>{{ article.pk }}</td>
+	</tr>
+	<tr>
+		<th>제목</th>
+		<td><input type="text" class="form-control" name="title" value="{{ article.title }}"></td>
+	</tr>
+	<tr>
+		<th>내용</th>
+		<td><textarea rows="10" class="form-control" name="content">{{ article.content }}</textarea></td>
+	</tr>
+    <tr>
+		<th>작성자</th>
+		<td><input type="text" class="form-control" name="author" value="{{ article.author }}"></td>
+	</tr>
+    <tr>
+		<th>작성일</th>
+		<td>{{ article.created_at | date:"Y-m-d H:i" }}</td>
+	</tr>
+</table>
+
+<button class="btn btn-primary" type="submit">게시글 저장</button>
+</form>
+{% endblock %}
