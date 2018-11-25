@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 
-{% block title %}<title>게시글 수정 - {{ article.pk }}. {{ article.title }}</title>{% endblock %}
+{% block title %}
+{% if article %}
+<title>게시글 수정 - {{ article.pk }}. {{ article.title }}</title>
+{% else %}
+<title>게시글 작성</title>
+{% endif %}
+{% endblock %}
 
 {% block css %}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
