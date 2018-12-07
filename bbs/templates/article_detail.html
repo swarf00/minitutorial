@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}<title>게시글 상세 - {{ article.pk }}. {{ article.title }}</title>{% endblock %}
+{% block title %}<title>게시글 상세 - {{ article.pk }}. {{ article.title }}</title>{% endblock title %}
 
 {% block css %}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -31,4 +31,4 @@
 </table>
 
 <a href="/article/{{ article.pk }}/update/"><button class="btn btn-primary" type="button">게시글 수정</button></a>
-{% endblock %}
+{% endblock content %}

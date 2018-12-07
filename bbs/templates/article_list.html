@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}<title>게시글 목록</title>{% endblock %}
+{% block title %}<title>게시글 목록</title>{% endblock title %}
 
 {% block css %}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -24,4 +24,4 @@
 </table>
 
 <a href="/article/create/"><button class="btn btn-primary" type="button">새 게시글 작성</button></a>
-{% endblock %}
+{% endblock content %}
