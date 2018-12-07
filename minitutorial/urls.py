@@ -17,14 +17,17 @@ from django.contrib import admin
 from django.urls import path
 
 from bbs.views import hello, ArticleListView, ArticleDetailView, ArticleCreateUpdateView
+from user.views import UserRegistrationView
 
 urlpatterns = [
     path('hello/<to>', hello), 
 
-    path('article/', ArticleListView.as_view()),
+    path('article/', ArticleListView.as_view(), name='article-list'),
     path('article/create/', ArticleCreateUpdateView.as_view()),
     path('article/<article_id>/', ArticleDetailView.as_view()),
     path('article/<article_id>/update/', ArticleCreateUpdateView.as_view()),
+
+    path('user/create/', UserRegistrationView.as_view()),
 
     path('admin/', admin.site.urls),
 ]
