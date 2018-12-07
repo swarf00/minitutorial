@@ -13,6 +13,8 @@ class UserAdmin(admin.ModelAdmin):
         return obj.date_joined.strftime("%Y-%m-%d")
 
     def last_login_at(self, obj):
+        if not obj.last_login:
+            return ''
         return obj.last_login.strftime("%Y-%m-%d %H:%M")
 
     joined_at.admin_order_field = '-date_joined'      # 가장 최근에 가입한 사람부터 리스팅
