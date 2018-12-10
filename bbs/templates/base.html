@@ -21,6 +21,22 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="/article/">게시글 목록</a>
             </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="">
+                        {% if not request.user.is_authenticated %}
+                        <a href="/user/create/">가입하기</a>
+                        {% endif %}
+                    </li>
+                    <li class="">
+                        {% if request.user.is_authenticated %}
+                        <a href="/user/login/">로그아웃</a>
+                        {% else %}
+                        <a href="/user/login/">로그인</a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
     {% if messages %}

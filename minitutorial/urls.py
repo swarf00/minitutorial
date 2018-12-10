@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 
 from bbs.views import hello, ArticleListView, ArticleDetailView, ArticleCreateUpdateView
-from user.views import UserRegistrationView
+from user.views import UserRegistrationView, UserLoginView
 
 urlpatterns = [
     path('hello/<to>', hello), 
@@ -28,6 +28,7 @@ urlpatterns = [
     path('article/<article_id>/update/', ArticleCreateUpdateView.as_view()),
 
     path('user/create/', UserRegistrationView.as_view()),
+    path('user/login/', UserLoginView.as_view()),
 
     path('admin/', admin.site.urls),
 ]

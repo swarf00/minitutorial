@@ -1,4 +1,8 @@
+from datetime import datetime
+
+from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.views.generic import TemplateView
 
@@ -10,7 +14,6 @@ class ArticleListView(TemplateView):
     queryset = Article.objects.all()
 
     def get(self, request, *args, **kwargs):
-        print(request.GET)
         ctx = {
             'articles': self.queryset
         }
@@ -40,7 +43,8 @@ class ArticleDetailView(TemplateView):
         return self.render_to_response(ctx)
 
 
-class ArticleCreateUpdateView(TemplateView):
+class ArticleCreateUpdateView(LoginRequiredMixin, TemplateView):
+    login_url = settings.LOGIN_URL
     template_name = 'article_update.html'
     queryset = Article.objects.all()
     pk_url_kwargs = 'article_id'

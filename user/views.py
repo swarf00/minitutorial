@@ -1,7 +1,8 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.views import LoginView
 from django.views.generic import CreateView
 
-from user.forms import UserRegistrationForm
+from user.forms import UserRegistrationForm, LoginForm
 
 
 class UserRegistrationView(CreateView):
@@ -9,4 +10,7 @@ class UserRegistrationView(CreateView):
     form_class = UserRegistrationForm
     success_url = '/article/'
 
-    # fields = ('email', 'name', 'password')
+
+class UserLoginView(LoginView):
+    authentication_form = LoginForm
+    template_name = 'user/login_form.html'

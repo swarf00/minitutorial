@@ -127,6 +127,12 @@ STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'user.User'
 
+LOGIN_REDIRECT_URL = '/article/'
+
+LOGIN_URL = '/user/login/'
+
+# SESSION_COOKIE_SECURE = True
+
 # LOCALE_PATHS = (
 #     os.path.join(BASE_DIR, 'locale'),
 # )
