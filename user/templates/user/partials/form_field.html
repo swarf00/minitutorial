@@ -1,0 +1,9 @@
+{% for field in form %}
+<div class="form-group {% if field.errors|length > 0 %}has-error{%endif %}">
+    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+    <input name="{{ field.html_name }}" id="{{ field.id_for_label }}" class="form-control" type="{{ field.field.widget.input_type }}" value="{{ field.value|default_if_none:'' }}">
+    {% for error in field.errors %}
+        <label class="control-label" for="{{ field.id_for_label }}">{{ error }}</label>
+    {% endfor %}
+</div>
+{% endfor %}

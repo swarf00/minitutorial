@@ -2,33 +2,27 @@
 {% load i18n %}
 {% load static %}
 
-{% block title %}<title>로그인</title>{% endblock %}
+{% block title %}<title>회원 가입</title>{% endblock %}
 
 {% block css %}
 {{ block.super }}
+<!--<link rel="stylesheet" href="{% static '/css/user.css' %}">-->
 <link rel="stylesheet" href="{% static 'user/css/user.css' %}">
-<style>
-    .link-below-button { margin-top: 10px; text-align: right;}
-</style>
 {% endblock css %}
 
 {% block content %}
 <div class="panel panel-default user-panel">
     <div class="panel-heading">
-        로그인하기
+        가입하기
     </div>
     <div class="panel-body">
         <form action="." method="post">
             {% csrf_token %}
             {% include 'user/partials/form_field.html' with form=form %}
             <div class="form-actions">
-                <button class="btn btn-primary btn-large" type="submit">로그인하기</button>
+                <button class="btn btn-primary btn-large" type="submit">가입하기</button>
             </div>
-            <a href="/user/resend_verify_email/">
-                <div class="link-below-button">인증이메일 재발송</div>
-            </a>
         </form>
     </div>
 </div>
-
 {% endblock content %}

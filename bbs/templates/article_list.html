@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}<title>게시글 목록</title>{% endblock title %}
 
 {% block css %}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<style type="text/css">
-    tbody > tr {cursor: pointer;}
-</style>
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'bbs/static/css/bbs.css' %}">
 {% endblock css %}
 
 {% block content %}

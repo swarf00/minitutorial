@@ -1,0 +1,17 @@
+.user-panel {
+    width: 360px;
+    margin: 0 auto;
+}
+p {
+    text-align: center;
+}
+label {
+    width: 50%;
+    text-align: left;
+}
+.control-label {
+    width: 100%;
+}
+.user-panel .form-actions > button {
+    width: 100%;
+}

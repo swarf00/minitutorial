@@ -125,11 +125,37 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = '/var/www/static'
+
+STATICFILES_DIRS = (
+    # os.path.join(BASE_DIR, 'bbs/static'),
+    # os.path.join(BASE_DIR, 'user/static'),
+)
+
+
 AUTH_USER_MODEL = 'user.User'
 
 LOGIN_REDIRECT_URL = '/article/'
 
 LOGIN_URL = '/user/login/'
+
+LOGOUT_REDIRECT_URL = '/article/'
+
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'awesome@gmail.com'
+EMAIL_HOST_PASSWORD = '7h1515myp455w0rd'
+EMAIL_USE_TLS = True
+
+
+try:
+    from minitutorial.settings_local import *
+except ImportError:
+    pass
+
+
+# EMAIL_USE_SSL
 
 # SESSION_COOKIE_SECURE = True
 
