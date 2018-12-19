@@ -105,6 +105,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'user.oauth.backends.NaverBackend',
+    'django.contrib.auth.backends.ModelBackend'
+]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
@@ -144,9 +149,12 @@ LOGOUT_REDIRECT_URL = '/article/'
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'awesome@gmail.com'
-EMAIL_HOST_PASSWORD = '7h1515myp455w0rd'
+EMAIL_HOST_USER = 'your gmail address'
+EMAIL_HOST_PASSWORD = 'your gmail password'
 EMAIL_USE_TLS = True
+
+NAVER_CLIENT_ID = 'your client id'
+NAVER_SECRET_KEY = 'your secret key'
 
 
 try:

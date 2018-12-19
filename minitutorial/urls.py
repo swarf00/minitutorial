@@ -18,7 +18,7 @@ from django.contrib.auth.views import LogoutView
 from django.urls import path
 
 from bbs.views import hello, ArticleListView, ArticleDetailView, ArticleCreateUpdateView
-from user.views import UserRegistrationView, UserLoginView, UserVerificationView, ResendVerifyEmailView
+from user.views import UserRegistrationView, UserLoginView, UserVerificationView, ResendVerifyEmailView, SocialLoginCallbackView
 
 urlpatterns = [
     path('hello/<to>', hello), 
@@ -33,6 +33,7 @@ urlpatterns = [
     path('user/resend_verify_email/', ResendVerifyEmailView.as_view()),
     path('user/login/', UserLoginView.as_view()),
     path('user/logout/', LogoutView.as_view()),
+    path('user/login/social/<provider>/callback/', SocialLoginCallbackView.as_view()),
 
     path('admin/', admin.site.urls),
 ]

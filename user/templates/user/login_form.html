@@ -7,12 +7,12 @@
 {% block css %}
 {{ block.super }}
 <link rel="stylesheet" href="{% static 'user/css/user.css' %}">
-<style>
-    .link-below-button { margin-top: 10px; text-align: right;}
-</style>
 {% endblock css %}
 
 {% block content %}
+
+{% include 'user/partials/social_login_panel.html' with panel_name='간편 로그인' %}
+
 <div class="panel panel-default user-panel">
     <div class="panel-heading">
         로그인하기
@@ -30,5 +30,4 @@
         </form>
     </div>
 </div>
-
 {% endblock content %}

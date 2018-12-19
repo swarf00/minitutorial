@@ -1,0 +1,30 @@
+{% load static %}
+
+{% static 'user/img/kakao_login.png' as kakao_button %}
+{% static 'user/img/kakao_login_ov.png' as kakao_button_hover %}
+{% static 'user/img/naver_login_green.png' as naver_button %}
+{% static 'user/img/naver_login_white.png' as naver_button_hover %}
+
+<div class="panel panel-default user-panel">
+    <div class="panel-heading">
+        {{ panel_name }}
+    </div>
+    <div class="panel-body text-center">
+        <div class="pull-left">
+            <a>
+                <img src="{{ kakao_button }}"
+                     onmouseover="this.src='{{ kakao_button_hover }}'"
+                     onmouseleave="this.src='{{ kakao_button }}'"height="34">
+            </a>
+        </div>
+        <div class="pull-right">
+            <a href="#" onclick="naverLogin()">
+                <img src="{{ naver_button }}"
+                     onmouseover="this.src='{{ naver_button_hover }}'"
+                     onmouseleave="this.src='{{ naver_button }}'"height="34">
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'user/js/social_login.js' %}"></script>
