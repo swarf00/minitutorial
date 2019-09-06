@@ -54,8 +54,11 @@ class ArticleCreateUpdateView(LoginRequiredMixin, TemplateView):
         pk = self.kwargs.get(self.pk_url_kwargs)
         article = queryset.filter(pk=pk).first()
 
-        if pk and not article:
+        if pk:
+          if not article:
             raise Http404('invalid pk')
+          elif article.author != self.request.user:                             # 작성자가 수정하려는 사용자와 다른 경우
+            raise Http404('invalid user')
         return article
 
     def get(self, request, *args, **kwargs):
@@ -68,10 +71,12 @@ class ArticleCreateUpdateView(LoginRequiredMixin, TemplateView):
 
     def post(self, request, *args, **kwargs):
         action = request.POST.get('action')
-        post_data = {key: request.POST.get(key) for key in ('title', 'content', 'author')}
+        post_data = {key: request.POST.get(key) for key in ('title', 'content')} # 작성자를 입력받지 않도록 수정
         for key in post_data:
             if not post_data[key]:
                 messages.error(self.request, '{} 값이 존재하지 않습니다.'.format(key), extra_tags='danger')
+
+        post_data['author'] = self.request.user
 
         if len(messages.get_messages(request)) == 0:
             if action == 'create':
