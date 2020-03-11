@@ -98,7 +98,7 @@ class SocialLoginCallbackView(NaverLoginMixin, View):
             is_success, error = self.login_with_naver(csrf_token, code)
             if not is_success:
                 messages.error(request, error, extra_tags='danger')
-            return HttpResponseRedirect(success_url if is_success else self.failure_url)
+            return HttpResponseRedirect(success_url if is_success else self.failure_url + '?reprompt=true')
 
         return HttpResponseRedirect(self.failure_url)
 

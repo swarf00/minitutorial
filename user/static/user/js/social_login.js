@@ -17,6 +17,12 @@ function naverLogin() {
         redirect_uri: location.origin + '/user/login/social/naver/callback/' + (next ? '?next=' + next : ''),
         state: document.querySelector('[name=csrfmiddlewaretoken]').value
     }
+
+    const search = new URLSearchParams(location.search)
+    console.log(search.get('reprompt'))
+    if (search.get('reprompt') == 'true') {
+        params.auth_type = 'reprompt'
+    }
     url = buildUrl('https://nid.naver.com/oauth2.0/authorize', params)
     location.replace(url)
 }
